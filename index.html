@@ -19,6 +19,23 @@
     gtag('config', 'AW-18436564167');
   </script>
 
+  <!-- Event snippet for Whats Lamsa conversion page
+  In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+  <script>
+  function gtag_report_conversion(url) {
+    var callback = function () {
+      if (typeof(url) != 'undefined') {
+        window.location = url;
+      }
+    };
+    gtag('event', 'conversion', {
+        'send_to': 'AW-18436564167/iPkKCPrPxfUcEMfJntdE',
+        'event_callback': callback
+    });
+    return false;
+  }
+  </script>
+
   <style>
     :root{--brand:#075178;--brand2:#0b769d;--aqua:#42c4df;--soft:#f4fbfd;--ink:#173a4b;--muted:#657c88;--line:#d7e9ef;--wa:#25D366;--paper:#fff;--shadow:0 18px 46px rgba(7,81,120,.10)}
     *{box-sizing:border-box}
@@ -225,7 +242,7 @@
     }catch(e){go();}
     return false;
   }
-  document.querySelectorAll('.track-wa').forEach(a=>a.addEventListener('click',function(e){e.preventDefault();reportGoogleAdsConversion(this.href,'AW-18436564167/GMRECJz87fQcEMfJntdE');}));
+  document.querySelectorAll('.track-wa').forEach(a=>a.addEventListener('click',function(e){e.preventDefault();gtag_report_conversion(this.href);}));
   document.querySelectorAll('.track-call').forEach(a=>a.addEventListener('click',function(e){e.preventDefault();reportGoogleAdsConversion(this.href,'AW-18436564167/ybIjCMPT7PQcEMfJntdE');}));
 })();
 </script>
